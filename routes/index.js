@@ -1,9 +1,14 @@
 var express = require('express');
 var router = express.Router();
+var ctrlmain = require('../controllers/main.js');
 
-/* GET home page. */
-router.get('/', function(req, res) {
-  res.render('index', { title: 'Express' });
-});
+/* Main page. */
+router.get('/', ctrlmain.show);
 
+/* PlayList page. */
+router.get('/playlist', ctrlmain.playlist);
+
+/* Upload page. */
+router.get('/upload', ctrlmain.upload);
+ 
 module.exports = router;
