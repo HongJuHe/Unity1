@@ -3,6 +3,8 @@ var router = express.Router();
 var ctrlmain = require('../controllers/main.js');
 var ctrlupload = require('../controllers/upload.js');
 var ctrlplaylist = require('../controllers/playlist.js');
+var ctrluploadFile = require('../controllers/file.js');
+
 
 /* Main page. */
 router.get('/', ctrlmain.show);
@@ -14,5 +16,8 @@ router.get('/playlist', ctrlplaylist.playlist);
 router.get('/upload', ctrlupload.upload);
 
 router.post('/upload', ctrlupload.addFile)
+
+router.get('/file', ctrluploadFile.uploadpage)
+router.post('/file', ctrluploadFile.uploadGame)
  
 module.exports = router;
