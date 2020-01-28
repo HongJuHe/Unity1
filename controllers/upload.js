@@ -14,9 +14,12 @@ module.exports.upload = function(req, res) {
 };
 
 module.exports.addFile = function(req, res){
+<<<<<<< HEAD
 
     console.log(req.body.name);
 
+=======
+>>>>>>> 15ff6c3fdced1f9a6e51f85996729c531fc3d73c
     Filedb.create({
         name : req.body.name,
         id : req.body.id,
@@ -31,8 +34,15 @@ module.exports.addFile = function(req, res){
             res.write('<h2>file failed!</h2>');
             res.end();
         }else{
+<<<<<<< HEAD
             res.redirect('/file')
             
+=======
+            console.log(file);
+            res.writeHead('200', {'Content-Type':'text/html;charset=utf-8'});
+            res.write('<h2>file 추가</h2>');
+            res.end();
+>>>>>>> 15ff6c3fdced1f9a6e51f85996729c531fc3d73c
         }
     });
 

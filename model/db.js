@@ -1,6 +1,10 @@
 var mongoose = require('mongoose');
 var gracefulShutdown;
+<<<<<<< HEAD
 var dbURI = 'mongodb://localhost/local';
+=======
+var dbURI = 'mongodb://juhee:1234@localhost:27017/admin';
+>>>>>>> 15ff6c3fdced1f9a6e51f85996729c531fc3d73c
 if (process.env.NODE_ENV === 'production') {
     dbURI = process.env.MONGOLAB_URI;
 }
@@ -46,4 +50,8 @@ process.on('SIGTERM', function() {
 });
 
 // BRING IN YOUR SCHEMAS & MODELS
+<<<<<<< HEAD
 require('./files');
+=======
+require('./files');
+>>>>>>> 15ff6c3fdced1f9a6e51f85996729c531fc3d73c

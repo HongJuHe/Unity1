@@ -4,7 +4,7 @@ head
   meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
   meta(name='description' content='')
   meta(name='author' content='')
-  title = title
+  title= title
   // Custom fonts for this theme
   link(href='/bootstrap/vendor/fontawesome-free/css/all.min.css' rel='stylesheet' type='text/css')
   link(href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css')
@@ -30,9 +30,9 @@ nav#mainNav.navbar.navbar-expand-lg.bg-secondary.text-uppercase.fixed-top
 header.masthead.bg-primary.text-white.text-center
   .container.d-flex.align-items-center.flex-column
     // Masthead Avatar Image
-    img.masthead-avatar.mb-5(src='img/avataaars.svg' alt='')
+    img.masthead-avatar.mb-5(src='/bootstrap/img/2.svg ' alt='')
     // Masthead Heading
-    h1.masthead-heading.text-uppercase.mb-0 Unity
+    h1.masthead-heading.text-uppercase.mb-0= pageHeader.title
     // Icon Divider
     .divider-custom.divider-light
       .divider-custom-line
