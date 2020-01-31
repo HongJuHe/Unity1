@@ -3,14 +3,15 @@ var Filedb = mongoose.model('files');
 
 var multer = require('multer');
 var fs = require('fs');
-
+var fileid;
+var dir; 
 
 var storage = multer.diskStorage({
     destination: function(req, file, callback){
-        callback(null, 'fileStorage')
+        callback(null, 'fileStorage');
     },
     filename: function(req, file, callback){
-        callback(null, file.originalname)
+        callback(null, file.originalname);
     }
 })
 
@@ -23,6 +24,10 @@ var fileUpload = multer({
 
 /* GET 'Upload' page*/
 module.exports.uploadpage = function(req, res) {
+    
+    fileid = req.params.pw;
+    dir = 'fileStorage/'+fileid+'/';
+
     res.render('fileGame', {
         title: 'play game',
         pageHeader: {
@@ -30,12 +35,13 @@ module.exports.uploadpage = function(req, res) {
         pageFooter: {
             explain: 'copylight'}
     });
+
 };
 
 module.exports.uploadGame = function(req, res){
 
-    console.log(req.body.name);
 
+    console.log(dir);
     fileUpload(req, res, function(err){
         console.log(req.body);
     })
