@@ -54,7 +54,7 @@ module.exports.addFile = function(req, res){
 
     dirUrl = dirUrl + '/' + fileContent;
 
-    fs.mkdir(dirUrl,0666, function(err){
+    fs.mkdir(dirUrl, function(err){
         if(err){
             console.error(err);
         }
