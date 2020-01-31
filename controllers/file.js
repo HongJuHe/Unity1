@@ -4,14 +4,16 @@ var Filedb = mongoose.model('files');
 var multer = require('multer');
 var fs = require('fs');
 var fileid;
-var dir; 
+var dir;
+var number = 0; 
 
 var storage = multer.diskStorage({
     destination: function(req, file, callback){
         callback(null, dir);
     },
     filename: function(req, file, callback){
-        callback(null, file.originalname);
+        callback(null, number +file.originalname);
+        number = number + 1;
     }
 })
 
@@ -40,7 +42,7 @@ module.exports.uploadpage = function(req, res) {
 
 module.exports.uploadGame = function(req, res){
 
-
+    number = 0;
     console.log(dir);
     fileUpload(req, res, function(err){
         console.log(req.body);
