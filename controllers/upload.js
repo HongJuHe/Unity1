@@ -49,8 +49,7 @@ module.exports.addFile = function(req, res){
     var date = Filedb.find({"password":req.body.passwd});
 
     var dirUrl = './fileStorage';
-    var fileContent = new Date();
-    fileContent = fileContent +'_'+ req.body.passwd;
+    var fileContent = Date.now() +'_'+ req.body.passwd;
 
     dirUrl = dirUrl + '/' + fileContent;
 
