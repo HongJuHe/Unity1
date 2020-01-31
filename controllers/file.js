@@ -12,7 +12,7 @@ var storage = multer.diskStorage({
         callback(null, dir);
     },
     filename: function(req, file, callback){
-        callback(null, number +file.originalname);
+        callback(null, number +'_'+file.originalname);
         number = number + 1;
     }
 })
