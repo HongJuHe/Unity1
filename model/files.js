@@ -6,8 +6,11 @@ var FileSchema = new mongoose.Schema({
     game_name : {type : String, required : true},
     password : {type : String, required : true},
     content : {type : String},
-    fileLocation : {type : String},
     uploadAt : {type : Date, default : Date.now}
+});
+
+FileSchema.static('findAll', function(callback){
+    return this.find({ }, callback);
 });
 
 mongoose.model('files', FileSchema);
