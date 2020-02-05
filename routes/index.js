@@ -3,14 +3,15 @@ var router = express.Router();
 var ctrlmain = require('../controllers/main.js');
 var ctrlupload = require('../controllers/upload.js');
 var ctrlplaylist = require('../controllers/playlist.js');
+var ctrlplay = require('../controllers/play.js');
 var ctrluploadFile = require('../controllers/file.js');
 
 /* Main page. */
 router.get('/', ctrlmain.show);
-
+/* Play page. */
+router.get('/play/:objectid', ctrlplay.playgame);
 /* PlayList page. */
 router.get('/playlist', ctrlplaylist.playlist);
-
 /* Upload page. */
 router.get('/upload', ctrlupload.upload);
 

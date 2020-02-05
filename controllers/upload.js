@@ -61,4 +61,3 @@ module.exports.addFile = function(req, res){
 
     res.redirect('/file/'+fileContent);
 }
-

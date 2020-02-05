@@ -5,15 +5,13 @@ var multer = require('multer');
 var fs = require('fs');
 var fileid;
 var dir;
-var number = 0; 
 
 var storage = multer.diskStorage({
     destination: function(req, file, callback){
         callback(null, dir);
     },
     filename: function(req, file, callback){
-        callback(null, number +'_'+file.originalname);
-        number = number + 1;
+        callback(null, file.originalname);
     }
 })
 
@@ -27,10 +25,9 @@ var fileUpload = multer({
 /* GET 'Upload' page*/
 module.exports.uploadpage = function(req, res) {
     
-    fileid = req.params.pw;
-    dir = 'fileStorage/'+fileid+'/';
+    dir = 'public/fileStorage/'+req.params.pw+'/'; 
 
-    res.render('fileGame', {
+    res.render('fileGame', { 
         title: 'play game',
         pageHeader: {
             title: 'Unity'},
@@ -42,16 +39,18 @@ module.exports.uploadpage = function(req, res) {
 
 module.exports.uploadGame = function(req, res){
 
-    number = 0;
-    console.log(dir);
     fileUpload(req, res, function(err){
-        console.log(req.body);
+        if(err){
+            console.dir(err);
+	    return;
+	}
+        console.log(dir);
     })
+ 
     
     console.log('file upload')
 
-    res.redirect('/')
+    res.redirect('/playlist')
 
 
 }
-
