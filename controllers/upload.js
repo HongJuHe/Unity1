@@ -10,7 +10,7 @@ module.exports.upload = function(req, res) {
         pageHeader: {
             title: 'Unity'},
         pageFooter: {
-            explain: 'copylight'}
+            explain: 'copyright'}
     });
 };
 
@@ -46,10 +46,9 @@ module.exports.addFile = function(req, res){
             });
         }
     }
-    var date = Filedb.find({"password":req.body.passwd});
 
-    var dirUrl = './fileStorage';
-    var fileContent = Date.now() +'_'+ req.body.passwd;
+    var dirUrl = 'public/fileStorage';
+    var fileContent = req.body.passwd;
 
     dirUrl = dirUrl + '/' + fileContent;
 
