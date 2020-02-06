@@ -8,13 +8,16 @@ var ctrluploadFile = require('../controllers/file.js');
 
 /* Main page. */
 router.get('/', ctrlmain.show);
+
 /* Play page. */
+router.post('/play/:objectid', ctrlplay.play);
 router.get('/play/:objectid', ctrlplay.playgame);
+
 /* PlayList page. */
 router.get('/playlist', ctrlplaylist.playlist);
+
 /* Upload page. */
 router.get('/upload', ctrlupload.upload);
-
 router.post('/upload', ctrlupload.addFile)
 
 router.get('/file/:pw', ctrluploadFile.uploadpage)
