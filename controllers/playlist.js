@@ -33,7 +33,7 @@ module.exports.playlist = function(req, res){
 
 			var suffix = file.substr(file.length - 4, file.length);
 
-			if(suffix === '.jpg' || suffix === '.png'){
+			if(suffix === '.jpg' || suffix === '.png' || suffix === '.JPG' || suffix === '.PNG'){
 				thumbnail = file;		
 			}
 	}
