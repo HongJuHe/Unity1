@@ -17,46 +17,53 @@ module.exports.upload = function(req, res) {
 module.exports.addFile = function(req, res){
 
     console.log(req.body.name);
-
     var names = req.body.name;
     var ids = req.body.id;
 
-    for(var i = 0; i < names.length; i++){
-        if(names[i] != ''){
-            Filedb.create({
-                name : names[i],
-                id : ids[i],
-                game_name : req.body.game_name,
-                password : req.body.passwd,
-                content : req.body.content
+    var namesFile = [];
+    var idsFile = [];
 
-            }, function(err, file){
-                if(err){
-                    console.log(err);
-                    res.writeHead('200', {'Content-Type':'text/html;charset=utf-8'});
-                    res.write('<h2>file failed!</h2>');
-                    res.end();
-                    return;
-                    
-                }else{
-                    /*
-                    console.dir(file);
-                    */
-                }
-            });
+    for(var i = 0; i < 3; i++){
+        if(names[i] != ''){
+            namesFile.push(names[i]);
         }
+        if(ids[i] != ''){
+            idsFile.push(ids[i]);
+        }
+
     }
 
-    var dirUrl = 'public/fileStorage';
-    var fileContent = req.body.passwd;
+    console.log(namesFile);
 
-    dirUrl = dirUrl + '/' + fileContent;
+    Filedb.create({
+        name : namesFile,
+        id : idsFile,
+        game_name : req.body.game_name,
+        password : req.body.passwd,
+        content : req.body.content
 
-    fs.mkdir(dirUrl, function(err){
+    }, function(err, file){
         if(err){
-            console.error(err);
+            console.log(err);
+            res.writeHead('200', {'Content-Type':'text/html;charset=utf-8'});
+            res.write('<h2>file failed!</h2>');
+            res.end();
+            return;
+                    
+        }else{
+            var dirUrl = 'public/fileStorage';
+            var fileContent = req.body.passwd;
+
+            dirUrl = dirUrl + '/' + fileContent;
+
+            fs.mkdir(dirUrl, function(err){
+                if(err){
+                    console.error(err);
+                }
+            });
+
+            res.redirect('/file/'+fileContent);
         }
     });
-
-    res.redirect('/file/'+fileContent);
+    
 }
