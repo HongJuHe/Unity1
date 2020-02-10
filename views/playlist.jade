@@ -11,29 +11,16 @@ html
     body
         .container
             .row
-                -for(var i = 0 ; i < result.length - 1; i++)
+                -for(var i = 0 ; i < result.length; i++)
                     -var passwd = result[i].password;
-                    -var gameTitle1 = result[i].game_name;
+                    -var gameTitle = result[i].game_name;
                     -var objectid = result[i].objectid;
-                    if (i==0)
-                        .col-4
-                            .card(style="width: 18rem;")
-                                img.card-img-top(src = "../fileStorage/" + passwd + "/" + result[i].thumbnail)
-                                .card-body(align = "center")
-                                    h5.card-title #{gameTitle1}
-                                    a.btn.btn-primary(href='/play/:' + objectid) Play
-                            br
-                            br
-                    else
-                        -var gameTitle2 = result[i+1].game_name;
-                        if(gameTitle1 != gameTitle2)
-                            -var passwd = result[i+1].password;
-                            -var num2 = result[i+1].number;
-                            .col-4  
-                                .card(style="width: 18rem;")
-                                    img.card-img-top(src = "../fileStorage/" + passwd + "/" + result[i+1].thumbnail)
-                                    .card-body(align = "center")
-                                        h5.card-title #{gameTitle2}
-                                        a.btn.btn-primary(href='/play/:' + objectid) Play
-                                br
-                                br
+                    .col-4
+                        .card(style="width: 18rem;")
+                            img.card-img-top(src = "/fileStorage/" + passwd + "/" + result[i].thumbnail)
+                            .card-body(align = "center")
+                                h5.card-title #{gameTitle}
+                                a.btn.btn-primary(href='/play/:' + objectid) Play
+                        br
+                        br
+                

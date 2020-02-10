@@ -1,2 +1,33 @@
 html
+  head
+    link(rel='import', href='hi.html')
+    meta(http-equiv='Content-Type' content='text/html; charset=utf-8')
+    title
+    style.
+        .frame {width: 70%; height: 60%; border:0;}
+  
+  body
+    -var game_name = result[0].game_name;
+    -var uploadAt = result[0].uploadAt;
+    -var content = result[0].content;
+    -var password = result[0].password;
+    -var htmldir =  result[0].htmldir;
+
+    h2 #{game_name} 
+    -for(var i =0 ; i < result.length; i++)
+      -var name = result[i].name;
+      -var id = result[i].id;
+      h4 #{name} ( #{id} ) 
+
+    h4 #{uploadAt}
+    //.container 
+        //iframe.frame(src = htmldir)
+    iframe.frame(src = htmldir)
+    h4 #{content}
+ 
+
+
+    //#container.frame
+      //iframe(width:'100%', height:'200px', src = htmldir)	
+
 
