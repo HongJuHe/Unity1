@@ -1,27 +1,45 @@
-html
-  head
-    link(rel='import', href='hi.html')
-    meta(http-equiv='Content-Type' content='text/html; charset=utf-8')
-    title
-    style.
-        .frame {width: 70%; height: 60%; border:0;}
-  
-  body
-    -var game_name = result[0].game_name;
-    -var uploadAt = result[0].uploadAt;
-    -var content = result[0].content;
-    -var password = result[0].password;
-    -var htmldir =  result[0].htmldir;
+doctype html
+head
+  include ./head.jade
+  style.
+        .frame {width: 70vw; height: 75vh; border:2;}
 
-    h2 #{game_name} 
-    -for(var i =0 ; i < result.length; i++)
-      -var name = result[i].name;
-      -var id = result[i].id;
-      h4 #{name} ( #{id} ) 
+// Body
+section#portfolio.page-section.portfolio
+  -var game_name = result[0].game_name;
+  -var uploadAt = result[0].uploadAt;
+  -var content = result[0].content;
+  -var password = result[0].password;
+  -var htmldir =  result[0].htmldir;
+  br
+  .container
+    br
+    br
+    // Portfolio Section Heading
+    h2.page-section-heading.text-center.text-uppercase.text-secondary.mb-0= game_name
+    // Icon Divider
+    .divider-custom
+      .divider-custom-line
+      .divider-custom-icon
+        i.fas.fa-star
+      .divider-custom-line
+    // Portfolio Grid Items
+    .row
+      iframe.frame(src = htmldir)
+      .col-lg-4.ml-auto
+         h4.text-uppercase.mb-4 -- Name --
+           -for(var i = 0 ; i < result.length; i++)
+             -var name = result[i].name;
+             -var id = result[i].id;
+             h5.text-uppercase.mb-4 #{name}: #{id}
+         h4.text-uppercase.mb-4 -- uploadat --
+           h5.text-uppercase.mb-4 #{uploadAt}
+      .col-lg-4.mr-auto
+         h4.text-uppercase.mb-4 -- Explain --
+           h5.text-uppercase.mb-4 #{content}
+#footer
+  include ./footer.jade
 
-    h4 #{uploadAt}
-    iframe.frame(src = htmldir)
-    h4 #{content}
  
 
 

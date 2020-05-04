@@ -50,10 +50,11 @@ module.exports.playgame = function(req, res){
 		var dir = "public/fileStorage/" +password;
 		var htmldir = " ";
 		var files = fs.readdirSync(dir);
-	
+	        console.log(files)
       		for (var i = 0; i < files.length ; i++)
 		{
 			var file = files[i];
+			console.log(file)
 			var suffix = file.substr(file.length -5, file.length);
 			console.log(suffix);
 
@@ -64,23 +65,22 @@ module.exports.playgame = function(req, res){
 		}
 		htmldir = '/fileStorage/' +password +'/' +htmldir;
 		
-		console.log(name.length)
-		for (var i = 0 ; i < name.length; i++) 
-		{
-
-			name = results[0]._doc.name[i];
-			id = results[0]._doc.id[i];
-
-			output.push({game_name : game_name, uploadAt : uploadAt, content : content, password : password, htmldir : htmldir, name : name, id : id});
-		}
+		console.log(name)
 		
+		for (var i = 0 ; i < name.length; i++)
+			{
+				name1 = results[0]._doc.name[i];
+				console.log("hi");
+				id = results[0]._doc.id[i];
+				output.push({game_name:game_name, uploadAt:uploadAt, content:content, password:password, htmldir:htmldir, name:name1, id:id});
+			}
 		console.log(output);
 		//res.write(htmldir);
 		res.render('play', {
 		title: 'play game',
 		result : output,
 		pageHeader: {
-		title: 'Unity'},
+		title: 'play game'},
 		pageFooter: {
 		explain: 'copylight'}
     });		

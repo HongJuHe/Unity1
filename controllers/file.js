@@ -47,10 +47,9 @@ module.exports.uploadGame = function(req, res){
         console.log(dir);
     })
  
-    
     console.log('file upload')
 
-    res.redirect('/playlist')
+    res.redirect('/completeFile')
 
 
 }

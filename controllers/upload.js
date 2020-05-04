@@ -8,7 +8,7 @@ module.exports.upload = function(req, res) {
     res.render('upload', {
         title: 'play game',
         pageHeader: {
-            title: 'Unity'},
+            title: 'upload'},
         pageFooter: {
             explain: 'copyright'}
     });
@@ -16,18 +16,17 @@ module.exports.upload = function(req, res) {
 
 module.exports.addFile = function(req, res){
 
-    console.log(req.body.name);
     var names = req.body.name;
     var ids = req.body.id;
 
     var namesFile = [];
     var idsFile = [];
 
-    for(var i = 0; i < 3; i++){
-        if(names[i] != ''){
+    for(var i = 0; i < names.length; i++){
+        if(names[i] != null){
             namesFile.push(names[i]);
         }
-        if(ids[i] != ''){
+        if(ids[i] != null){
             idsFile.push(ids[i]);
         }
 

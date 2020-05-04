@@ -46,7 +46,7 @@ module.exports.playlist = function(req, res){
         title: 'play game',
 	result: output,
         pageHeader: {
-            title: 'Unity'},
+            title: 'playlist'},
         pageFooter: {
             explain: 'copyright'}
     });
